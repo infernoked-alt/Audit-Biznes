@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+  <html lang="uz">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Audit Biznes - Savdo va Marketing Tahlili</title>
+      <meta name="description" content="Kichik bizneslar uchun savdo va marketing audit platformasi. Moliyaviy maqsadlarni hisoblash va tizim xavflarini aniqlash.">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+      <div class="background-blobs">
+          <div class="blob blob-1"></div>
+          <div class="blob blob-2"></div>
+          <div class="blob blob-3"></div>
+      </div>
+
+      <main class="container">
+          <header class="header">
+              <h1 class="glow-text">Audit Biznes</h1>
+              <p class="subtitle">Savdo va Marketing Tahlili Platformasi</p>
+        </header>
+
+        <div id="setupPage" class="page-container visible">
+            <div class="dashboard-grid">
+                  <!-- Input Section -->
+                  <section class="card glass audit-form">
+                  <div class="card-header">
+                      <h2>Biznes Holati</h2>
+                      <p>Hozirgi holatni baholang</p>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="crm">CRM Tizimi</label>
+                        <select id="crm" class="glass-input">
+                              <option value="no">Mavjud emas (Yo'q)</option>
+                            <option value="yes">Mavjud</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="salesTeam">Sotuv Bo'limi</label>
+                                                      <select id="salesTeam" class="glass-input">
+                                                          <option value="no">Alohida bo'lim yo'q (O'zi sotadi)</option>
+                                                          <option value="yes">Mavjud</option>
+                                                      </select>
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label for="socialMedia">Ijtimoiy Tarmoqlar</label>
+                                                      <select id="socialMedia" class="glass-input">
+                                                          <option value="excellent">Juda yaxshi (Upakovka qilingan)</option>
+                            <option value="good">Yaxshi</option>
+                            <option value="bad">Yomon</option>
+                                                      </select>
+                                                  </div>
+                                              </div>
+
+                                              <div class="card-header spacing-top">
+                                                  <h2>Moliyaviy Maqsadlar</h2>
+                                                  <p>Kelajakdagi ko'rsatkichlarni kiriting</p>
+                                              </div>
+                                              <div class="form-grid">
+                                                  <div class="form-group">
+                                                      <label for="incomeGoal">Oylik daromad maqsadi ($)</label>
+                                                      <input type="number" id="incomeGoal" value="10000" class="glass-input">
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label for="averageCheck">O'rtacha chek ($)</label>
+                                                      <input type="number" id="averageCheck" value="60" class="glass-input">
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label for="conversion">Sotuv konversiyasi (%)</label>
+                                                      <input type="number" id="conversion" value="30" class="glass-input">
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label for="cplMin">Min. Lid narxi (CPL $)</label>
+                                                      <input type="number" step="0.1" id="cplMin" value="0.8" class="glass-input">
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label for="cplMax">Max. Lid narxi (CPL $)</label>
+                                                      <input type="number" step="0.1" id="cplMax" value="1.5" class="glass-input">
+                                                  </div>
+                                              </div>
+                                              <button id="calculateBtn" class="btn-primary">Auditni Boshlash</button>
+                                          </section>
+                                          </div>
+                                      </div>
+
+                                      <div id="resultsPage" class="page-container hidden">
+                                          <div class="dashboard-grid">
+                                              <!-- Results Section (Initially Hidden) -->
+                <section id="resultsSection" class="results-container">
+                                                  <div class="card glass result-card risk-card">
+                                                      <h3>Xavf Darajasi</h3>
+                                                      <div class="risk-meter-container">
+                                                          <div id="riskMeter" class="risk-meter"></div>
+                                                          <span id="riskLabel" class="risk-label"></span>
+                                                      </div>
+                                                      <p id="riskDescription" class="card-description"></p>
+                                                  </div>
+
+                                                  <div class="metrics-grid">
+                                                      <div class="card glass mini-card">
+                                                          <span class="mini-label">Kerakli mijozlar</span>
+                                                          <span id="resCustomers" class="mini-value">0</span>
+                                                      </div>
+                                                      <div class="card glass mini-card">
+                                                          <span class="mini-label">Kerakli lidlar</span>
+                                                          <span id="resLeads" class="mini-value">0</span>
+                                                      </div>
+                                                  </div>
+
+                                                  <div class="card glass budget-card">
+                                                      <h3>Reklama Byudjeti</h3>
+                                                      <div class="budget-range">
+                                                          <div class="budget-item">
+                                                              <span class="label">Minimal</span>
+                                                              <span id="resBudgetMin" class="value">$0</span>
+                                                          </div>
+                                                          <div class="separator"></div>
+                                                          <div class="budget-item">
+                                                              <span class="label">Optimal</span>
+                                                              <span id="resBudgetMax" class="value">$0</span>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+
+                                                  <div class="card glass penalty-card">
+                                                      <div class="penalty-header">
+                                                          <h3>Samaradorlik Jarimasi</h3>
+                                                          <span id="totalPenalty" class="penalty-badge">+0%</span>
+                                                      </div>
+                                                      <div class="penalty-details">
+                                                          <div class="penalty-item">
+                                                              <span>CRM yo'qligi:</span>
+                                                              <span id="penaltyCRM" class="penalty-value">+0%</span>
+                                                          </div>
+                                                          <div class="penalty-item">
+                                                              <span>Sotuvchi yo'qligi:</span>
+                                                              <span id="penaltySales" class="penalty-value">+0%</span>
+                                                          </div>
+                                                      </div>
+                                                      <p class="penalty-warning">Real byudjet ortib ketishi mumkin!</p>
+                                                  </div>
+                                              </section>
+
+                                              <!-- Recommendations -->
+                                              <section id="recommendationsSection" class="card glass recommendations">
+                                                  <div class="rec-header">
+                                                      <h3>Biznesni Rivojlantirish Rejasi</h3>
+                        <p>Auditingiz asosida ishlab chiqilgan maxsus tavsiyalar</p>
+                                                  </div>
+                                                  <ul id="recommendationList"></ul>
+                                                  <div class="action-footer">
+                                                      <button id="backBtn" class="btn-outline">Orqaga</button>
+                                                      <button id="downloadBtn" class="btn-primary">PDF Yuklash</button>
